@@ -1,6 +1,5 @@
 from numpy import exp, array, random, dot
 
-
 ### LEARNING DATA FOR NEURON
 training_set_inputs = array([[0, 1, 1], [3, 1, 2], [3, 2, 1], [0, 3, 1], [2, 3, 2]])
 print("INPUT MATRIX")
@@ -11,13 +10,11 @@ training_set_outputs = array([[0, 3, 3, 0, 2]]).T
 print("OUTPUT RESULTS")
 print(training_set_outputs)
 random.seed(1)
-### AFTER CHANGE 2 TO 3 THE RESULT CHANGE FORM [0.99993704] TO [0.99993706]
 ### IF U WANT TO MAKE SOME CHANGES TO RESULT U NEED TO CHANGE FIRST AND LAST DIGITS
 ### IF U CHANGE (3, 1) TO (3, 4) IT SHOW MATRIX WITH 4 DIFFIRENT DIGITS
 synaptic_weights = 2 * random.random((3, 1)) - 1
 print("SYNAPTIC WEIGHTS AT START")
 print(synaptic_weights)
-
 
 ### RESULT BECOME MORE ACCURATE IF U INCREASE THE NUMBERS OF THE ROUNDS
 for iteration in range(100000):
