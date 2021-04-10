@@ -1,35 +1,25 @@
-from numpy import exp, array, random, dot
+import cv2
 
-### LEARNING DATA FOR NEURON
-training_set_inputs = array([[0, 1, 1], [3, 1, 2], [3, 2, 1], [0, 3, 1], [2, 3, 2]])
-print("INPUT MATRIX")
-print(training_set_inputs)
-### MATRIX TRANSPOSING
-### IF U WANT TO DELETE .T THEN SET (3, 4) IN synaptic_weights VARIABLE
-training_set_outputs = array([[0, 3, 3, 0, 2]]).T
-print("OUTPUT RESULTS")
-print(training_set_outputs)
-random.seed(1)
-### IF U WANT TO MAKE SOME CHANGES TO RESULT U NEED TO CHANGE FIRST AND LAST DIGITS
-### IF U CHANGE (3, 1) TO (3, 4) IT SHOW MATRIX WITH 4 DIFFIRENT DIGITS
-synaptic_weights = 2 * random.random((3, 1)) - 1
-print("SYNAPTIC WEIGHTS AT START")
-print(synaptic_weights)
+def loading_displaying_saving():
+    ### ADD UR PIC
+    img = cv2.imread('ninja.jpg')
 
-### RESULT BECOME MORE ACCURATE IF U INCREASE THE NUMBERS OF THE ROUNDS
-for iteration in range(100000):
-    ### EXP = EXPONENTIATION
-    ### DOT = MATRIX MULTIPLICATION
-    output = 3 / (1 + exp(-(dot(training_set_inputs, synaptic_weights))))
-    ### REWRITE synaptic_weights BY MULTIPLICATION TRANSPARENT INPUTS AND OUTPUTS
-    ### FORMULA CALLED "Weighted by mistake" AND CONTAINS SECOND PART STARTED AFTER COMMA
-    ### SECOND PART OF FORMULA CALLED "Sigmode Gradient"
-    synaptic_weights += dot(training_set_inputs.T, (training_set_outputs - output) * output * (1 - output))
-    ### IF UNCOMMENT STRINGS BELOW U WILL SEE ALL IN-BETWEEN RESULTS. THINK TWICE
-    #print("NEW SYNAPTIC WEIGHTS")
-    #print(synaptic_weights)
 
-print("RESULT")
-### HERE WE DIVIDE 3 (1, in original) ON 1 PLUS EXPONENTIONAL MULTIPLICATION OF MATRIX WHICH WE WANT TO PREDICT
-### AND synaptic_weights WHICH U CAN FIND ABOVE
-print(3 / (1 + exp(-(dot(array([3, 0, 0]), synaptic_weights)))))
+    cv2.imwrite('grayninja.jpg', img)
+
+    print("Высота:" + str(img.shape[0]))
+    print("Ширина:" + str(img.shape[1]))
+    print("Количество каналов:" + str(img.shape[2]))
+
+    (b, g, r) = img[0, 0]
+    print("Красный: {}, Зелёный: {}, Синий: {}".format(r, g, b))
+
+    img[0, 0] = (255, 0, 0)
+    (b, g, r) = img[0, 0]
+    print("Красный: {}, Зелёный: {}, Синий: {}".format(r, g, b))
+
+    res_img = cv2.resize(img, (300, 300), cv2.INTER_NEAREST)
+    cv2.imshow('ninja', res_img)
+    cv2.waitKey(0)
+
+loading_displaying_saving()
