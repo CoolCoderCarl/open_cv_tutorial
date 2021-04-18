@@ -1,25 +1,17 @@
-import cv2
+import numpy as np
+import cv2 as cv
+### U CAN PUT HERE EVERY PICTURE U WANT
+filename = 'house.jpg'
 
-def loading_displaying_saving():
-    ### ADD UR PIC
-    img = cv2.imread('ninja.jpg')
+img = cv.imread(filename)
+gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
+gray = np.float32(gray)
+dst = cv.cornerHarris(gray,2,3,0.04)
 
+dst = cv.dilate(dst,None)
 
-    cv2.imwrite('grayninja.jpg', img)
+img[dst>0.01*dst.max()]=[0,0,255]
 
-    print("Высота:" + str(img.shape[0]))
-    print("Ширина:" + str(img.shape[1]))
-    print("Количество каналов:" + str(img.shape[2]))
-
-    (b, g, r) = img[0, 0]
-    print("Красный: {}, Зелёный: {}, Синий: {}".format(r, g, b))
-
-    img[0, 0] = (255, 0, 0)
-    (b, g, r) = img[0, 0]
-    print("Красный: {}, Зелёный: {}, Синий: {}".format(r, g, b))
-
-    res_img = cv2.resize(img, (300, 300), cv2.INTER_NEAREST)
-    cv2.imshow('ninja', res_img)
-    cv2.waitKey(0)
-
-loading_displaying_saving()
+cv.imshow('Corner detector',img)
+if cv.waitKey(0) & 0xff == 27:
+    cv.destroyAllWindows()
