@@ -3,15 +3,42 @@ import cv2 as cv
 ### U CAN PUT HERE EVERY PICTURE U WANT
 filename = 'house.jpg'
 
-img = cv.imread(filename)
-gray = cv.cvtColor(img,cv.COLOR_BGR2GRAY)
-gray = np.float32(gray)
-dst = cv.cornerHarris(gray,2,3,0.04)
+###
+### THAT FUNC IS HIGHLIGHT THE CORNER ON PICTURE
+###
+def corner_detector():
+    img = cv.imread(filename)
+    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
-dst = cv.dilate(dst,None)
+    gray = np.float32(gray)
 
-img[dst>0.01*dst.max()]=[0,0,255]
+    dst = cv.cornerHarris(gray, 2, 3, 0.04)
+    dst = cv.dilate(dst, None)
 
-cv.imshow('Corner detector',img)
-if cv.waitKey(0) & 0xff == 27:
-    cv.destroyAllWindows()
+    img[dst > 0.01 * dst.max()] = [0, 0, 255]
+    cv.imshow('Corner detector', img)
+
+    if cv.waitKey(0) & 0xff == 27:
+        cv.destroyAllWindows()
+
+###
+### THAT FUNC IS MAKE PIC LIGHTER
+###
+def gray_light():
+    img = cv.imread(filename)
+    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+    gray_add = cv.add(gray, 200)
+    gray_mul = cv.multiply(gray, 1.8)
+
+    cv.imshow('Original gray', img)
+    cv.imshow('Add light', gray_add)
+    cv.imshow('Multuply light', gray_mul)
+
+    if cv.waitKey(0) & 0xff == 27:
+        cv.destroyAllWindows()
+
+
+if __name__ == '__main__':
+    # gray_light()
+    corner_detector()
