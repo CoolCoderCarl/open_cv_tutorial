@@ -7,7 +7,9 @@ filename = 'house.jpg'
 ### THAT FUNC IS HIGHLIGHT THE CORNER ON PICTURE
 ###
 def corner_detector():
+    ### CREATE CONTAINER WITH READED IMAGE
     img = cv.imread(filename)
+    ### ALWAYS MAKE ORIGINAL IMAGE GRAY
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
     gray = np.float32(gray)
@@ -18,6 +20,7 @@ def corner_detector():
     img[dst > 0.01 * dst.max()] = [0, 0, 255]
     cv.imshow('Corner detector', img)
 
+    ### WAIT FOR ANY KEY
     if cv.waitKey(0) & 0xff == 27:
         cv.destroyAllWindows()
 
@@ -28,13 +31,16 @@ def gray_light():
     img = cv.imread(filename)
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
+    ### ADD LIGHT TO PIXELS
     gray_add = cv.add(gray, 200)
+    ### MULTIPLY LIGHT TO PIXELS
     gray_mul = cv.multiply(gray, 1.8)
 
     cv.imshow('Original gray', img)
     cv.imshow('Add light', gray_add)
     cv.imshow('Multuply light', gray_mul)
 
+    ### WAIT FOR ANY KEY
     if cv.waitKey(0) & 0xff == 27:
         cv.destroyAllWindows()
 
