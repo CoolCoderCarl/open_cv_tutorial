@@ -1,22 +1,10 @@
-
-import computer_vision_l.c_v_l as my_cv
-
-### U CAN PUT HERE EVERY PICTURE U WANT
-filename = 'house.jpg'
-
-if __name__ == '__main__':
-    # my_cv.corner_detector(filename)
-    my_cv.gray_light(filename)
-=======
 import numpy as np
 import cv2 as cv
-### U CAN PUT HERE EVERY PICTURE U WANT
-filename = 'house.jpg'
 
 ###
 ### THAT FUNC IS HIGHLIGHT THE CORNER ON PICTURE
 ###
-def corner_detector():
+def corner_detector(filename):
     ### CREATE CONTAINER WITH READED IMAGE
     img = cv.imread(filename)
     ### ALWAYS MAKE ORIGINAL IMAGE GRAY
@@ -37,7 +25,7 @@ def corner_detector():
 ###
 ### THAT FUNC IS MAKE PIC LIGHTER
 ###
-def gray_light():
+def gray_light(filename):
     img = cv.imread(filename)
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
 
@@ -53,9 +41,3 @@ def gray_light():
     ### WAIT FOR ANY KEY
     if cv.waitKey(0) & 0xff == 27:
         cv.destroyAllWindows()
-
-
-if __name__ == '__main__':
-    # gray_light()
-    corner_detector()
-
