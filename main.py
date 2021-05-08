@@ -10,3 +10,4 @@ if __name__ == '__main__':
 
     # my_nn.basic()
     my_nn.dimensional()
+
