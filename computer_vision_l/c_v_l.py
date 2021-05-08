@@ -41,3 +41,18 @@ def gray_light(filename):
     ### WAIT FOR ANY KEY
     if cv.waitKey(0) & 0xff == 27:
         cv.destroyAllWindows()
+
+
+def sift(filename):
+    img = cv.imread(filename)
+    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+
+    sift = cv.SIFT_create()
+    kp = sift.detect(gray, None)
+    grayimg = cv.drawKeypoints(gray, kp, img)
+    # cv.imwrite('house_sift.jpg', img)
+    cv.imshow('SIFT', grayimg)
+
+    ### WAIT FOR ANY KEY
+    if cv.waitKey(0) & 0xff == 27:
+        cv.destroyAllWindows()
