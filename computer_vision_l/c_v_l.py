@@ -1,5 +1,6 @@
 import numpy as np
 import cv2 as cv
+import matplotlib
 
 ###
 ### THAT FUNC IS HIGHLIGHT THE CORNER ON PICTURE
@@ -42,7 +43,9 @@ def gray_light(filename):
     if cv.waitKey(0) & 0xff == 27:
         cv.destroyAllWindows()
 
-
+###
+### SCALE-INVARIANT FEATURE TRANSFORM
+###
 def sift(filename):
     img = cv.imread(filename)
     gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
@@ -56,3 +59,18 @@ def sift(filename):
     ### WAIT FOR ANY KEY
     if cv.waitKey(0) & 0xff == 27:
         cv.destroyAllWindows()
+
+
+###
+### SPEEDED-UP ROBUST FEATURES
+###
+def surf(filename):
+    img = cv.imread(filename)
+    surf = cv.xfeatures2d.SURF_create(400)
+    kp, des = surf.detectAndCompute(img, None)
+
+    len(kp)
+
+    img2 = cv.drawKeypoints(img, kp, None, (255, 0, 0), 4)
+    # SOMETHING WENT WRONG WITH plt COMMAND; TRYING import matprotlib BUT NOTHING CHANGES; SKIPPED
+    # plt.imshow(img2), plt.show()
