@@ -1,6 +1,6 @@
 import numpy as np
 import cv2 as cv
-import matplotlib
+import matplotlib.pyplot as plt
 
 ###
 ### THAT FUNC IS HIGHLIGHT THE CORNER ON PICTURE
@@ -65,12 +65,17 @@ def sift(filename):
 ### SPEEDED-UP ROBUST FEATURES
 ###
 def surf(filename):
-    img = cv.imread(filename)
-    surf = cv.xfeatures2d.SURF_create(400)
-    kp, des = surf.detectAndCompute(img, None)
+    img = cv.imread(filename, 0)
+    ### xfeatures2d DOES NOT EXIST ???
+    # surf = cv.xfeatures2d.SURF_create(400)
+    # kp, des = surf.detectAndCompute(img, None)
 
-    len(kp)
+    # len(kp)
 
-    img2 = cv.drawKeypoints(img, kp, None, (255, 0, 0), 4)
-    # SOMETHING WENT WRONG WITH plt COMMAND; TRYING import matprotlib BUT NOTHING CHANGES; SKIPPED
+    # img2 = cv.drawKeypoints(img, kp, None, (255, 0, 0), 4)
+
     # plt.imshow(img2), plt.show()
+
+    ### WAIT FOR ANY KEY
+    if cv.waitKey(0) & 0xff == 27:
+        cv.destroyAllWindows()
