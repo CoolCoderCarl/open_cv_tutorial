@@ -74,7 +74,7 @@ def fast(filename):
     print("neighborhood: {}".format(fast.getType()))
     print("Total Keypoints with nonmaxSuppression: {}".format(len(kp)))
     # cv.imwrite('fast_true.png', img2)
-    cv.imshow('FAST_TRUEh', img2)
+    cv.imshow('FAST_TRUE', img2)
     # Disable nonmax Suppression
     fast.setNonmaxSuppression(0)
     kp = fast.detect(img, None)
