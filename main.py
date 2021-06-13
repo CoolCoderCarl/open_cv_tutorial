@@ -1,7 +1,7 @@
 import computer_vision_l.c_v_l as my_cv
-import neural_network_l.n_n_l as my_nn
+# import neural_network_l.n_n_l as my_nn
 
-### U CAN PUT HERE EVERY PICTURE U WANT
+### You can put here any picture you want
 # filename = 'house.jpg'
 filename = 'test.jpg'
 
