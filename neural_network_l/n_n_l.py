@@ -1,11 +1,11 @@
 import numpy as np
 
 def basic():
-    ### ELEMENTS
+    ### Elements
     elem = 15
-    ### ROW
+    ### Row
     row = 3
-    ### COLUMN
+    ### Column
     column = 5
     a = np.arange(elem).reshape(row, column)
     print(a)
@@ -23,11 +23,11 @@ def basic():
     print(type(b))
 
 def dimensional():
-    ### ONE DIMENSIONAL
+    ### One dimensional
     a = np.arange(6)
-    ### TWO DIMENSIONAL
+    ### Two dimensional
     b = np.arange(12).reshape(4, 3)
-    ### THREE DIMENSIONAL
+    ### Three dimensional
     c = np.arange(24).reshape(2, 3, 4)
 
     print('ONE DIMENSIONAL')
