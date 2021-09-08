@@ -1,7 +1,7 @@
-# Artificial Intelligence Learning
+# Open Comp Vision Learning
 
-In that project realize computer vision lib & numpy lib  
+This project introduces some the methods of the computer vision library.
 (https://docs.opencv.org/master/d1/d89/tutorial_py_orb.html)  
-(https://numpy.org/doc/stable/user/quickstart.html)  
+
 
 ## Packaging
